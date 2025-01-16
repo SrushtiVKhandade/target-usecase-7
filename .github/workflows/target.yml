@@ -1,0 +1,17 @@
+name: Triggered Workflow
+
+on:
+  repository_dispatch:
+    types: [custom_event]
+
+jobs:
+  handle-dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      # Add your steps here
+      - name: Print a message
+        run: echo "Workflow triggered by custom event!"
