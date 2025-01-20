@@ -1,15 +1,12 @@
-name: Target Workflow
-
+name: Receive Trigger from Another Repository
 on:
-  workflow_dispatch:
-
+  repository_dispatch:
+    types: [custom_event]
 jobs:
-  run-job:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Run a command
-      run: echo "Workflow triggered from another repository!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run a script
+        run: echo "Workflow triggered by Repository A"
